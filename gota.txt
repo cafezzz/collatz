@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("***ENTERO O NO ENTERO***");
+        Console.WriteLine("Ingrese un numero entero positivo:");
+        string numI = Console.ReadLine();
+        int numeroMax = 0;
+        List<int> numerosGenerados = new List<int>();
+
+        if (int.TryParse(numI, out int numero) && numero > 0)
+        {
+            Console.WriteLine($"Recorriendo el numero {numero} :");
+            do
+            {
+                numerosGenerados.Add(numero);
+
+                if (numero > numeroMax)
+                {
+                    numeroMax = numero;
+                }
+
+                if (numero % 2 == 0)
+                {
+                    numero /= 2;
+                }
+                else
+                {
+                    numero = numero * 3 + 1;
+                }
+                Console.WriteLine(numero);
+
+            } while (numero != 1);
+
+         
+            for (int i = 0; i < numerosGenerados.Count - 1; i++)
+            {
+                for (int j = 0; j < numerosGenerados.Count - 1 - i; j++)
+                {
+                    if (numerosGenerados[j] > numerosGenerados[j + 1])
+                    {
+                        int temp = numerosGenerados[j];
+                        numerosGenerados[j] = numerosGenerados[j + 1];
+                        numerosGenerados[j + 1] = temp;
+                    }
+                }
+            }
+
+            Console.WriteLine("Números generados ordenados:");
+            foreach (var num in numerosGenerados)
+            {
+                Console.WriteLine(num);
+            }
+        }
+        else
+        {
+            Console.WriteLine("No es un numero entero positivo.");
+        }
+
+        Console.WriteLine($"El numero max es:  {numeroMax}");
+    }
+}
+pr
+
+--- github----
+como intercambiar datos de variables si utilizar una variable auxiliar
+cambiar 
+                    int burbujeo = numbersGenerated[vaso];
+
+                        numbersGenerated[vaso] = numbersGenerated[vaso + 1];
+
+                        numbersGenerated[vaso + 1] = burbujeo;
